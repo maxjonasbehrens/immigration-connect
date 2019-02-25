@@ -3,10 +3,7 @@
 library(tidyverse)
 
 library(readr)
-X2019_01_28_processing_time <- read_csv("~/Documents/GitHub/immigration-connect/uscis-processing-time/2019-01-28-processing-time.csv")
-
-library(readr)
-uscis_processing_time_api_20190218 <- read_csv("~/Documents/GitHub/immigration-connect/uscis-processing-time/uscis-processing-time-api_20190218.csv")
+X2019_01_28_processing_time <- read_csv("2019-01-28-processing-time.csv")
 
 test_data <- X2019_01_28_processing_time[,c("form","ZIP","time_min","time_max")]
 test_data <- na.omit(test_data)
@@ -32,10 +29,9 @@ for (i in months) {
   data <- rbind(data,temp1,temp2)
 }
 
-# Plot Data with Leaflet ----------------------------------------------------
-library(leaflet)
+data <- data %>% 
+  mutate(time_mean = (time_min+time_max)/2) %>% 
+  filter(LNG < 0)
 
-m <- leaflet() %>% 
-  addTiles() %>% 
-  addCircleMarkers(lng = test_data$LNG, lat = test_data$LAT)
-m
+# Write Data to csv
+write_csv(data, 'viz_data.csv')

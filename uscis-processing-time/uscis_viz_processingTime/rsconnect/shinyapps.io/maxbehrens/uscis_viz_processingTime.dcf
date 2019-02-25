@@ -1,0 +1,13 @@
+name: uscis_viz_processingTime
+title: uscis_viz_processingTime
+username:
+account: maxbehrens
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 736628
+bundleId: 1898354
+url: https://maxbehrens.shinyapps.io/uscis_viz_processingTime/
+when: 1551111971.16663
+asMultiple: FALSE
+asStatic: FALSE
+ignoredFiles: 2019-01-28-processing-time.csv|data_manipulation.R|shiny_script.R|us_zipcode_coordinates.txt
